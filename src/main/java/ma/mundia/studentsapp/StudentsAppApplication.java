@@ -19,21 +19,20 @@ public class StudentsAppApplication implements CommandLineRunner {
     }
     @Override
     public void run(String... args) throws Exception {
-        //productRepository.save(new Product(null,"Computer",4300,3));
-        //productRepository.save(new Product(null,"Pinter",1200,4));
-        //productRepository.save(new Product(null,"Smart phone",3200,32));
+        productRepository.save(new Product(null,"Computer",4300,3));
+        productRepository.save(new Product(null,"Printer",1200,4));
+        productRepository.save(new Product(null,"Smart phone",3200,32));
         List<Product> products = productRepository.findAll();
         products.forEach(p->{
             System.out.println(p.toString());
         });
         Product product = productRepository.findById(Long.valueOf(1)).get();
-        System.out.println("dddddddd");
+        System.out.println("--- findById(1) ---");
         System.out.println(product.getId());
         System.out.println(product.getName());
         System.out.println(product.getQuantity());
-        System.out.println("ddddddd");
-        System.out.println("----------------");
-        List<Product> productList = productRepository.findbyNameContaining("C");
+        System.out.println("--- findByNameContaining(\"C\") ---");
+        List<Product> productList = productRepository.findByNameContaining("C");
         productList.forEach(p->{
             System.out.println(p);
         });
